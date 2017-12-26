@@ -1,53 +1,57 @@
-var userChoice = prompt("Do you choose rock, paper or scissors?");
-console.log("Player: "+ userChoice);
+const getUserChoice = (userInput) => {
+  userInput = userInput.toLowerCase()
+  if (userInput === 'paper' || userInput === 'rock' || userInput === 'scissors' || userInput === 'bomb') {
+    return userInput
+  } else {
+    console.log('Wrong value')
+  }
+}
 
-var computerChoice = Math.random();
-if (computerChoice < 0.34) {
-	computerChoice = "rock";
-} else if(computerChoice <= 0.67) {
-	computerChoice = "paper";
-} else {
-	computerChoice = "scissors";
-} console.log("Computer: " + computerChoice);
+const getComputerChoice = () => {
+  let randomNumber = Math.floor(Math.random() * 3)
+  switch (randomNumber) {
+    case 0:
+      return 'rock'
+    case 1:
+      return 'scissors'
+    case 2:
+      return 'paper'
+  }
+}
 
-
-
-var compare = function (userChoice,computerChoice){
-    // rock vs scissors = rock wins
-    // rock vs paper = paper wins
-
-    // scissors vs paper = scissors wins
-    // scissors vs rock = rock wins
-
-    // paper vs rock = paper wins
-    // paper vs scissors = scissors wins
-
-
-    if (userChoice === computerChoice){
-
-        return "The result is a tie!";
-
-    }else if (userChoice === "rock"){
-        if (computerChoice === "scissors"){
-            return "rock wins";
-        }else{
-            return "paper wins";
-        }
-    }else if (userChoice === "scissors"){
-        if (computerChoice === "paper"){
-            return "scissors wins";
-        }else {
-            return "rock win";
-        }
-
-    }else if (userChoice === "paper"){
-        if (computerChoice === "rock"){
-            return "paper wins";
-        }else{
-            return "scissors win";
-        }
+const determineWinner = (userChoice, computerChoice) => {
+  if (userChoice === computerChoice) {
+    return 'The game is a tie'
+  } else if (userChoice === 'rock') {
+    if (computerChoice === 'paper') {
+      return 'Computer win'
+    } else {
+      return 'Player win'
     }
+  } else if (userChoice === 'paper') {
+    if (computerChoice === 'scissors') {
+      return 'Computer win'
+    } else {
+      return 'Player win'
+    }
+  } else if (userChoice === 'scissors') {
+    if (computerChoice === 'rock') {
+      return 'Computer win'
+    } else {
+      return 'Player win'
+    }
+  } else if (userChoice === 'bomb') {
+    return 'Player Win'
+  }
+}
 
-};
+const playGame = (input) => {
+  const userChoice = getUserChoice(input)
+  const computerChoice = getComputerChoice()
+  console.log('You threw: ' + userChoice)
+  console.log('Computer choice: ' + computerChoice)
 
-compare(userChoice,computerChoice);
+  console.log(determineWinner(userChoice, computerChoice))
+}
+
+playGame('paper')
