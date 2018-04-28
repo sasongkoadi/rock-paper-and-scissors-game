@@ -1,5 +1,5 @@
 
-const getUserChoice = (userInput) => {
+/*const getUserChoice = (userInput) => {
   userInput = userInput.toLowerCase()
   if (userInput === 'paper' || userInput === 'rock' || userInput === 'scissors' || userInput === 'bomb') {
     return userInput
@@ -7,9 +7,9 @@ const getUserChoice = (userInput) => {
     console.log('Wrong value')
   }
 }
+*/
 
 
-/*
 const getUserChoice = () => {
  let randomNumber = Math.floor(Math.random() * 3) 
  switch (randomNumber){
@@ -21,7 +21,6 @@ const getUserChoice = () => {
    return 'paper'
  }
 }
-*/
 
 const getComputerChoice = () => {
   let randomNumber = Math.floor(Math.random() * 3)
@@ -61,8 +60,8 @@ const determineWinner = (userChoice, computerChoice) => {
   }
 }
 
-const playGame = (input) => {
-  const userChoice = getUserChoice(input)
+const playGame = () => {
+  const userChoice = getUserChoice()
   const computerChoice = getComputerChoice()
   console.log('You threw: ' + userChoice)
   console.log('Computer choice: ' + computerChoice)
@@ -70,4 +69,4 @@ const playGame = (input) => {
   console.log(determineWinner(userChoice, computerChoice))
 }
 
-playGame('bomb')
+playGame()
