@@ -1,10 +1,25 @@
-const getUserChoice = (userInput) => {
+
+/*const getUserChoice = (userInput) => {
   userInput = userInput.toLowerCase()
   if (userInput === 'paper' || userInput === 'rock' || userInput === 'scissors' || userInput === 'bomb') {
     return userInput
   } else {
     console.log('Wrong value')
   }
+}
+*/
+
+
+const getUserChoice = () => {
+ let randomNumber = Math.floor(Math.random() * 3) 
+ switch (randomNumber){
+  case 0:
+   return 'rock'
+  case 1:
+   return 'scissors'
+  case 2:
+   return 'paper'
+ }
 }
 
 const getComputerChoice = () => {
@@ -45,8 +60,8 @@ const determineWinner = (userChoice, computerChoice) => {
   }
 }
 
-const playGame = (input) => {
-  const userChoice = getUserChoice(input)
+const playGame = () => {
+  const userChoice = getUserChoice()
   const computerChoice = getComputerChoice()
   console.log('You threw: ' + userChoice)
   console.log('Computer choice: ' + computerChoice)
@@ -54,4 +69,4 @@ const playGame = (input) => {
   console.log(determineWinner(userChoice, computerChoice))
 }
 
-playGame('paper')
+playGame()
